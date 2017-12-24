@@ -11,6 +11,7 @@ def main():
     form = input("Pick format OGG (Android) or M4A (IOS): ")
     form = form.lower()
     if ask == 0:#Search through all realms
+        download = input("Download all? (y/n): ")
         print()
         display = open("FFRKMusicList.txt",'a')#Opens a text file named "FFRKMusicList and adds working URLs to the last line in the file
         for i in realms:
@@ -35,6 +36,11 @@ def main():
                     res.raise_for_status()
 #Test purposes                    print("A music file exists at:",url)
                     display.write(url + "\n")
+                    if download = "y":
+                        name = "bgm_"+realm+"_"+track+"."+form
+                        f = open("M/"+name,"wb")
+                        f.write(res.content)
+                        f.close()
                 except Exception as exc:
                     print('N/A')
     elif ask in realms:#Search through a specific realm
