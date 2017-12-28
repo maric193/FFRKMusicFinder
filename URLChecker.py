@@ -36,11 +36,12 @@ def main():
                     res.raise_for_status()
 #Test purposes                    print("A music file exists at:",url)
                     display.write(url + "\n")
-                    if download = "y":
+                    if download == "y":
                         name = "bgm_"+realm+"_"+track+"."+form
                         f = open("M/"+name,"wb")
                         f.write(res.content)
                         f.close()
+                        print("Download Complete!")
                 except Exception as exc:
                     print('N/A')
     elif ask in realms:#Search through a specific realm
@@ -49,6 +50,7 @@ def main():
         else:
             realm = str(ask)
         track = int(input("Give the track number or '0' to search all (w/o leading 0's): "))
+        download = input("Download selected track(s)? (y/n): ")
         display = open("FFRKMusicList.txt",'a')#Opens a text file named "FFRKMusicList and adds working URLs to the last line in the file
         print()
         if track == 0:#Search through all tracks (AAA)
@@ -67,8 +69,15 @@ def main():
                 res = requests.get(url)
                 try:
                     res.raise_for_status()
+                    
 #Test purposes                    print("A music file exists at:",url)
                     display.write(url + "\n")
+                    if download == "y":
+                        name = "bgm_"+realm+"_"+track+"."+form
+                        f = open("M/"+name,"wb")
+                        f.write(res.content)
+                        f.close()
+                        print("Download Complete!")
                 except Exception as exc:
                     print('N/A')
         elif track < 10:#Find specific track where AAA < 10
@@ -83,6 +92,12 @@ def main():
                 res.raise_for_status()
 #Test purposes                print("A music file exists at:",url)
                 display.write(url + "\n")
+                if download == "y":
+                        name = "bgm_"+realm+"_"+track+"."+form
+                        f = open("M/"+name,"wb")
+                        f.write(res.content)
+                        f.close()
+                        print("Download Complete!")
             except Exception as exc:
                 print('N/A')
         elif track < 100:#Find specific track if 1 <= AAA < 100
@@ -97,6 +112,12 @@ def main():
                 res.raise_for_status()
 #Test purposes                print("A music file exists at:",url)
                 display.write(url + "\n")
+                if download == "y":
+                        name = "bgm_"+realm+"_"+track+"."+form
+                        f = open("M/"+name,"wb")
+                        f.write(res.content)
+                        f.close()
+                        print("Download Complete!")
             except Exception as exc:
                 print('N/A')
 ##The block commented out below geos up to the max Array ID allowable (999)
